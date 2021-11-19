@@ -3,8 +3,9 @@ import "../../css/Checkout.css";
 import { useStateValue } from "../Providers/StateProvider";
 import Subtotal from "./Subtotal";
 import CheckoutProduct from "./CheckoutProduct";
+
 function CheckoutComp() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
   console.log(basket);
   return (
     <div className="checkout">
@@ -15,6 +16,7 @@ function CheckoutComp() {
           alt=""
         />
         <div>
+          <h3>Hello, {user?.email}</h3>
           <h2 className="checkout__title">Your Shopping Basket</h2>
            {/* Checkout Product */}
            {basket.map(item => (
