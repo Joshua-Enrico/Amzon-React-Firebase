@@ -1,19 +1,22 @@
-import React  from "react";
+import React from "react";
 import "../../css/CheckoutProduct.css";
 import { useStateValue } from "../Providers/StateProvider";
-import useForceUpdate from 'use-force-update';
+
 
 
 function CheckoutProduct({ id, image, title, price, rating, qty }) {
+  const [{ }, dispatch] = useStateValue();
 
-  const [{}, dispatch] = useStateValue();
-  const forceUpdate = useForceUpdate();
+
+
   const update_qty = (e) => {
     dispatch({
       type: "UPDATE_QTY",
       id: id,
       qty: parseInt(e.currentTarget.value),
     });
+    var e = Object.values(e.currentTarget)[0]
+    e.selected = true;
   };
 
   const removeFromBasket = () => {
@@ -22,7 +25,6 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
       type: "REMOVE_FROM_BASKET",
       id: id,
     });
-    forceUpdate();
   };
   return (
     <div className="checkoutProduct">
@@ -34,8 +36,8 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
           <strong>{price}</strong>
         </p>
         <select id="QtyValue" name="ROL" onChange={update_qty}>
-          <option hidden value="">
-            Qty: {qty}
+          <option id='id' className='default' selected='selected' hidden value="" >
+            Qty: { qty }
           </option>
           <option>1</option>
           <option>2</option>
