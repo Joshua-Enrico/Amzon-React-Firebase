@@ -1,13 +1,18 @@
 import React from "react";
 import "../../css/CheckoutProduct.css";
 import { useStateValue } from "../Providers/StateProvider";
-import Quantity from "./Quantity";
 
 function CheckoutProduct({ id, image, title, price, rating, qty }) {
-  
+  const [{}, dispatch] = useStateValue();
 
+  const update_qty = (e) => {
+    dispatch({
+      type: "UPDATE_QTY",
+      id: id,
+      qty: parseInt(e.currentTarget.value),
+    });
+  };
 
-  const [{ }, dispatch] = useStateValue();
   const removeFromBasket = () => {
     // Remove items from basket
     dispatch({
@@ -24,7 +29,22 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <Quantity qty={ qty }/>
+        <select id="QtyValue" name="ROL" onChange={update_qty}>
+          <option hidden value="">
+            Qty: {qty}
+          </option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>+10</option>
+        </select>
         <div className="checkoutProduct__rating">
           {Array(rating)
             .fill()

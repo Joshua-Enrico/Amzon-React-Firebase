@@ -22,6 +22,7 @@ function Product({id, title, image, price , rating}) {
         price: price,
         rating: rating,
         qty: 1,
+
       }
    })
     toast(<Msg />);
