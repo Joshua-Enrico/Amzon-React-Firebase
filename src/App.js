@@ -10,7 +10,7 @@ import { useStateValue } from "./components/Providers/StateProvider";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{} , dispatch] = useStateValue();
   useEffect(() => {
     // will run once the component is mounted
     auth.onAuthStateChanged((user) => {

@@ -4,7 +4,6 @@ export const initialState = {
 // selector
 export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price * item.qty + amount, 0);
-  console.log('flag2');
 
 // cases
 const reducer = (state, action) => {
@@ -30,13 +29,14 @@ const reducer = (state, action) => {
       if (index >= 0) {
         if (newBasket[index].qty > 1) {
           newBasket[index].qty -= 1;
-        } else newBasket.splice(index, 1);
+        } else {
+          newBasket.splice(index, 1);
+        }
       } else {
         console.warn(
           `Can't remove product (id: ${action.id}) as it's not in the basket!`
         );
       }
-      console.log('flag1');
       return {
         ...state,
         basket: newBasket,
@@ -48,21 +48,16 @@ const reducer = (state, action) => {
       );
       if (index_qty_update >= 0) {
         state.basket[index_qty_update].qty = action.qty;
-
       } else {
         console.warn(
           `Can't update product (id: ${action.id}) as it's not in the basket!`
         );
       }
-      console.log(state.basket);
-      console.log('flag3');
-
     case "SET_USER":
       return {
         ...state,
         user: action.user,
       };
-
     default:
       return state;
   }

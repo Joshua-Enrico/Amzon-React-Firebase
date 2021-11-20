@@ -4,10 +4,10 @@ import { useStateValue } from "./Providers/StateProvider";
 import { toast } from 'react-toastify';
 
 function Product({id, title, image, price , rating}) {
-  const [state , dispatch] = useStateValue();
+  const [{ }, dispatch] = useStateValue();
   const Msg = ({ closeToast, toastProps }) => (
     <div className='popup__Item' >
-      <img className='popup__Image' src={ image } />
+      <img className='popup__Image' alt='' src={ image } />
       <p>{ title }</p>
     </div>
   )

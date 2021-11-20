@@ -1,10 +1,13 @@
-import React from "react";
+import React  from "react";
 import "../../css/CheckoutProduct.css";
 import { useStateValue } from "../Providers/StateProvider";
+import useForceUpdate from 'use-force-update';
+
 
 function CheckoutProduct({ id, image, title, price, rating, qty }) {
-  const [{}, dispatch] = useStateValue();
 
+  const [{}, dispatch] = useStateValue();
+  const forceUpdate = useForceUpdate();
   const update_qty = (e) => {
     dispatch({
       type: "UPDATE_QTY",
@@ -19,6 +22,7 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
       type: "REMOVE_FROM_BASKET",
       id: id,
     });
+    forceUpdate();
   };
   return (
     <div className="checkoutProduct">
