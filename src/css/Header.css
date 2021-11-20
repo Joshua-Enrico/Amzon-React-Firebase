@@ -8,7 +8,7 @@
     z-index: 100;
 }
 .header__logo {
-    width: 100px;
+    width: 80px;
     object-fit: contain;
     margin: 0 20px;
     margin-top: 18px;
@@ -21,10 +21,11 @@
 }
 
 .header__searchInput {
-    height: 12px;
+    height: 20px;
     padding: 10px;
     border: none;
     width: 100%;
+    border-radius: 5px 0 0 5px;
 }
 
 .header__option {
@@ -66,7 +67,17 @@
 
 .header__searchIcon {
     padding: 5px;
-    height: 22px !important;
+    height: 30px !important;
     background-color: #cd9042;
+    border-radius: 0 5px 5px 0;
 
+}
+
+
+.header__location {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: -10px;
+    color: white;
 }

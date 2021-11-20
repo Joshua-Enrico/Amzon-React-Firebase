@@ -1,9 +1,16 @@
 import React from "react";
 import "../css/Product.css";
 import { useStateValue } from "./Providers/StateProvider";
+import { toast } from 'react-toastify';
 
 function Product({id, title, image, price , rating}) {
   const [state , dispatch] = useStateValue();
+  const Msg = ({ closeToast, toastProps }) => (
+    <div className='popup__Item' >
+      <img className='popup__Image' src={ image } />
+      <p>{ title }</p>
+    </div>
+  )
   const addTobasket = () => {
    // dispatch item into data layer
    dispatch({
@@ -14,8 +21,10 @@ function Product({id, title, image, price , rating}) {
         image: image,
         price: price,
         rating: rating,
+        qty: 1,
       }
    })
+    toast(<Msg />);
   };
   return (
     <div className="product">

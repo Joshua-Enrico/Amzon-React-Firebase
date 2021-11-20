@@ -3,14 +3,26 @@ export const initialState = {
 };
 // selector
 export const getBasketTotal = (basket) =>
-  basket?.reduce((amount, item) => item.price + amount, 0);
+  basket?.reduce((amount, item) => (item.price * item.qty) + amount, 0);
+
+// cases
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_BASKET":
-      return {
-        ...state,
-        basket: [...state.basket, action.item],
-      };
+      const index_qty = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.item.id
+      );
+      if (index_qty >= 0) {
+
+        state.basket[index_qty].qty += 1;
+        console.log(state.basket[index_qty].qty);
+      } else {
+        return {
+          
+          ...state,
+          basket: [...state.basket, action.item],
+        };
+      }
     case "REMOVE_FROM_BASKET":
       const index = state.basket.findIndex(
         (basketItem) => basketItem.id === action.id

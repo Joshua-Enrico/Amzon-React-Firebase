@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/LoginComponents/Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./components/Providers/StateProvider";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -39,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<HeHome />} />
         </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );
