@@ -1,11 +1,17 @@
-# Light Version of Amazon Ecommerce
+# Light Version of Amazon Ecommerce v1
 
 ## Technologies used with the following:
 React, js, Firebase, Firebase Cloud Storage, Express.js, stripe.js
 
+This project focused on creating 100% functional purchase functionality, purchase history, payment gateway using stripe (Do not enter your card, (exm: 4242 4242 4242 4242).
+
+## Future Additions
+This is a V1 version the follows  adittions will on v2.
+Create seller profile, search algorithms for product types, sales history.
+
 ## Warning
 
-For the moment the local installation is not avaiable due to a few firebase dependencies needes such a login with your own account and container, a full guide to full installation, soon.
+For the moment the local installation is not avaiable due to a few firebase dependencies needes such a login with your own account and container, a full guide to full installation, soon, You cant test the demo [Demo](https://clone-ce166.web.app/)
 
 ## Available Scripts
 
