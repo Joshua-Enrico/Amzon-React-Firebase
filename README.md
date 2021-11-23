@@ -3,6 +3,10 @@
 ## Technologies used with the following:
 React, js, Firebase, Firebase Cloud Storage, Express.js, stripe.js
 
+## Warning
+
+For the moment the local installation is not avaiable due to a few firebase dependencies needes such a login with your own account and container, a full guide to full installation, soon.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -11,6 +15,7 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
