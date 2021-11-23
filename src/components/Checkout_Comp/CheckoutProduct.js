@@ -4,9 +4,8 @@ import { useStateValue } from "../Providers/StateProvider";
 
 
 
-function CheckoutProduct({ id, image, title, price, rating, qty }) {
+function CheckoutProduct({ id, image, title, price, rating, qty, hideButton }) {
   const [{ }, dispatch] = useStateValue();
-
 
 
   const update_qty = (e) => {
@@ -15,12 +14,13 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
       id: id,
       qty: parseInt(e.currentTarget.value),
     });
-    var e = Object.values(e.currentTarget)[0]
-    e.selected = true;
+    var trgt = Object.values(e.currentTarget)[0]
+    trgt.selected = true;
   };
 
   const removeFromBasket = () => {
     // Remove items from basket
+
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: id,
@@ -60,7 +60,10 @@ function CheckoutProduct({ id, image, title, price, rating, qty }) {
               </span>
             ))}
         </div>
-        <button onClick={removeFromBasket}>Remove from Basket</button>
+        {!hideButton && (
+          <button onClick={removeFromBasket}>Remove from Basket</button>
+        )}
+
       </div>
     </div>
   );

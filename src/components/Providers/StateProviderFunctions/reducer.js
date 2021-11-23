@@ -14,7 +14,7 @@ const reducer = (state, action) => {
       );
       if (index_qty >= 0) {
         state.basket[index_qty].qty += 1;
-        console.log(state.basket[index_qty].qty);
+
       } else {
         return {
           ...state,
@@ -41,6 +41,11 @@ const reducer = (state, action) => {
         ...state,
         basket: newBasket,
       };
+    case "EMPTY_BASKET":
+    return {
+      ...state,
+      basket: [],
+    };
 
     case "UPDATE_QTY":
       const index_qty_update = state.basket.findIndex(
@@ -53,11 +58,16 @@ const reducer = (state, action) => {
           `Can't update product (id: ${action.id}) as it's not in the basket!`
         );
       }
-    case "SET_USER":
       return {
         ...state,
-        user: action.user,
+        basket: [...state.basket]
       };
+    case "SET_USER":
+        return {
+          ...state,
+          user: action.user,
+        };
+
     default:
       return state;
   }
